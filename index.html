@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع ليلى الخاص</title>
-    <!-- استدعاء خط لطيف للموقع -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <!-- مكتبة Canvas Confetti للمؤثرات الاحتفالية -->
-    <script src="https://jsdelivr.net"></script>
+    <title>موقع ليلى اللطيف</title>
     <style>
         :root {
-            --pink-dark: #ff7495;
-            --pink-light: #ffb7c5;
-            --pink-bg: #fff0f3;
+            --pink-dark: #ff69b4;
+            --pink-light: #ffb6c1;
+            --pink-bg: #fff0f5;
             --white: #ffffff;
         }
 
@@ -20,14 +16,15 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Tajawal', sans-serif;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         body {
             background-color: var(--pink-bg);
-            background-image: radial-gradient(var(--pink-light) 1px, transparent 0);
-            background-size: 24px 24px;
+            background-image: radial-gradient(var(--pink-light) 10%, transparent 11%);
+            background-size: 20px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -38,274 +35,238 @@
 
         .card {
             background: var(--white);
+            border-radius: 32px;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
             border: 4px solid var(--pink-light);
-            border-radius: 30px;
-            padding: 30px 20px;
             width: 100%;
             max-width: 400px;
+            padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(255, 116, 149, 0.15);
             position: relative;
-        }
-
-        /* شخصية كرتونية لطيفة مصممة بالـ CSS */
-        .character-box {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            position: relative;
-        }
-
-        .bunny {
-            width: 90px;
-            height: 90px;
-            background: var(--white);
-            border: 4px solid var(--pink-dark);
-            border-radius: 50% 50% 45% 45%;
-            position: absolute;
-            bottom: 0;
-            left: 15px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .bunny::before, .bunny::after {
-            content: '';
-            position: absolute;
-            top: -35px;
-            width: 24px;
-            height: 50px;
-            background: var(--white);
-            border: 4px solid var(--pink-dark);
-            border-radius: 50% 50% 10% 10%;
-        }
-
-        .bunny::before { left: 10px; transform: rotate(-10px); }
-        .bunny::after { right: 10px; transform: rotate(10px); }
-
-        .eyes {
-            position: absolute;
-            top: 40px;
-            left: 20px;
-            right: 20px;
+            min-height: 380px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .eye {
-            width: 10px;
-            height: 10px;
-            background: #333;
-            border-radius: 50%;
-        }
-
-        .blush {
-            position: absolute;
-            top: 50px;
-            width: 14px;
-            height: 8px;
-            background: var(--pink-light);
-            border-radius: 50%;
-        }
-        .blush.left { left: 10px; }
-        .blush.right { right: 10px; }
-
-        .mouth {
-            width: 12px;
-            height: 8px;
-            border: 3px solid #333;
-            border-top: none;
-            border-radius: 0 0 10px 10px;
-            position: absolute;
-            top: 48px;
-            left: 35px;
-            transition: all 0.2s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        /* نصوص وأزرار مرنة للموبايل */
-        h1 {
-            color: var(--pink-dark);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
+        /* شاشات الأسئلة المتحركة */
         .step {
             display: none;
+            width: 100%;
+            animation: scaleUp 0.4s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .step.active {
             display: block;
-            animation: fadeIn 0.4s ease-in-out forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
 
+        /* الشخصية الكرتونية */
+        .character-box {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .bounce {
+            animation: bounceAnim 2s infinite ease-in-out;
+        }
+
+        @keyframes bounceAnim {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        h1, h2 {
+            color: var(--pink-dark);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        /* الأزرار */
         .btn-group {
             display: flex;
-            gap: 15px;
             justify-content: center;
-            margin-top: 20px;
+            gap: 15px;
+            width: 100%;
+            margin-top: 10px;
         }
 
-        button {
-            background: var(--white);
-            border: 3px solid var(--pink-dark);
-            color: var(--pink-dark);
-            padding: 12px 28px;
+        .btn {
             font-size: 1.2rem;
-            font-weight: 800;
+            font-weight: bold;
+            padding: 12px 28px;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 0 var(--pink-dark);
+            border: none;
+            outline: none;
+            min-width: 110px;
         }
 
-        button:active {
-            transform: translateY(4px);
-            box-shadow: 0 0px 0 var(--pink-dark);
-        }
-
-        button.primary {
-            background: var(--pink-dark);
+        .btn-primary {
+            background-color: var(--pink-dark);
             color: var(--white);
-            box-shadow: 0 4px 0 #d6496b;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
         }
 
-        button.primary:active {
-            box-shadow: 0 0px 0 #d6496b;
+        .btn-primary:active { transform: scale(0.95); }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--pink-dark);
+            border: 3px solid var(--pink-light);
         }
 
-        /* قلوب متطايرة */
-        .heart-particle {
+        .btn-secondary:active { transform: scale(0.95); }
+
+        /* حركة البوسة */
+        .kiss-emoji {
+            font-size: 3.5rem;
+            display: inline-block;
+            animation: kissAnim 1.2s infinite ease-in-out;
+        }
+
+        @keyframes kissAnim {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3) rotate(-10deg); }
+        }
+
+        /* تأثير القلوب الطائرة */
+        .heart {
             position: fixed;
             color: var(--pink-dark);
             font-size: 24px;
             pointer-events: none;
-            animation: flyUp 1.5s linear forwards;
             z-index: 999;
+            animation: flyUp 2s linear forwards;
         }
 
         @keyframes flyUp {
-            0% { transform: translateY(0) scale(1); opacity: 1; }
-            100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
-        }
-
-        .kiss-mark {
-            position: absolute;
-            font-size: 40px;
-            top: 20%;
-            left: 40%;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .kiss-active {
-            animation: kissAnim 1s ease-out forwards;
-        }
-
-        @keyframes kissAnim {
-            0% { opacity: 0; transform: scale(0.5) translateY(0); }
-            50% { opacity: 1; transform: scale(1.3) translateY(-20px); }
-            100% { opacity: 0; transform: scale(1) translateY(-40px); }
+            0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) translateX(var(--x-move)) scale(1.5); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <!-- الشخصية الكرتونية اللطيفة -->
-        <div class="character-box">
-            <div class="bunny" id="bunnyChar">
-                <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
-                <div class="blush left"></div><div class="blush right"></div>
-                <div class="mouth" id="bunnyMouth"></div>
-            </div>
-            <div class="kiss-mark" id="kissMark">💋</div>
-        </div>
-
+        
         <!-- الخطوة 1: السؤال الأول -->
         <div class="step active" id="step1">
+            <div class="character-box bounce">
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                    <ellipse cx="35" cy="25" rx="8" ry="20" fill="#ffb6c1" stroke="#ff69b4" stroke-width="3"/>
+                    <ellipse cx="35" cy="25" rx="4" ry="12" fill="#fff"/>
+                    <ellipse cx="65" cy="25" rx="8" ry="20" fill="#ffb6c1" stroke="#ff69b4" stroke-width="3"/>
+                    <ellipse cx="65" cy="25" rx="4" ry="12" fill="#fff"/>
+                    <ellipse cx="50" cy="65" rx="30" ry="25" fill="#fff" stroke="#ff69b4" stroke-width="3"/>
+                    <circle cx="40" cy="62" r="3" fill="#000"/>
+                    <circle cx="60" cy="62" r="3" fill="#000"/>
+                    <circle cx="32" cy="68" r="4" fill="#ffb6c1" opacity="0.7"/>
+                    <circle cx="68" cy="68" r="4" fill="#ffb6c1" opacity="0.7"/>
+                    <path d="M 46 68 Q 50 72 54 68" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </div>
             <h1>هلو ليلى، شلونج؟ زينة؟</h1>
             <div class="btn-group">
-                <button class="primary" onclick="answerTrue()">إي زينة</button>
-                <button onclick="answerFalse()">لا</button>
+                <button class="btn btn-primary" onclick="nextStep(1, 'yes')">إي زينة</button>
+                <button class="btn btn-secondary" onclick="nextStep(1, 'no')">لا</button>
             </div>
         </div>
 
-        <!-- الخطوة 2: بعد الجواب -->
+        <!-- الخطوة 2: نتيجة السؤال الأول -->
         <div class="step" id="step2">
-            <h1 id="replyText"></h1>
+            <div class="character-box">
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                    <ellipse cx="35" cy="25" rx="8" ry="20" fill="#ffb6c1" stroke="#ff69b4" stroke-width="3"/>
+                    <ellipse cx="65" cy="25" rx="8" ry="20" fill="#ffb6c1" stroke="#ff69b4" stroke-width="3"/>
+                    <ellipse cx="50" cy="65" rx="30" ry="25" fill="#fff" stroke="#ff69b4" stroke-width="3"/>
+                    <circle cx="40" cy="62" r="3" fill="#000"/>
+                    <circle cx="60" cy="62" r="3" fill="#000"/>
+                    <circle cx="32" cy="68" r="5" fill="#ffb6c1"/>
+                    <circle cx="68" cy="68" r="5" fill="#ffb6c1"/>
+                    <path d="M 43 70 Q 50 64 57 70" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h2 id="response-text1">رسالة متغيرة...</h2>
             <div class="btn-group">
-                <button class="primary" onclick="triggerKiss()">جيت 😘</button>
+                <button class="btn btn-primary" onclick="playKiss()">جيت 😘</button>
             </div>
         </div>
 
-        <!-- الخطوة 3: سؤال الحب -->
+        <!-- الخطوة 3: حركة البوسة والصوت -->
         <div class="step" id="step3">
-            <h1>تحبيني؟ 🥺</h1>
+            <div class="kiss-emoji">😘💋</div>
+            <h2>اموووواه! فدوة لهالضحكة</h2>
             <div class="btn-group">
-                <button class="primary" onclick="triggerLove()">إي! ❤️</button>
+                <button class="btn btn-primary" onclick="goToStep(4)">التالي</button>
             </div>
         </div>
 
-        <!-- الخطوة 4: النهاية السعيدة -->
+        <!-- الخطوة 4: سؤال تحبيني؟ -->
         <div class="step" id="step4">
-            <h1 style="font-size: 1.8rem;">فدوة لله! وأنا هماتين أموت عليج يا أحلى ليلى بالدنيا! 🌸✨</h1>
+            <div class="character-box bounce">
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                    <ellipse cx="35" cy="25" rx="8" ry="20" fill="#ffb6c1" stroke="#ff69b4" stroke-width="3"/>
+                    <ellipse cx="65" cy="25" rx="8" ry="20" fill="#ffb6c1" stroke="#ff69b4" stroke-width="3"/>
+                    <ellipse cx="50" cy="65" rx="30" ry="25" fill="#fff" stroke="#ff69b4" stroke-width="3"/>
+                    <path d="M 38 60 Q 40 56 42 60 Q 44 64 40 66 Q 36 64 38 60" fill="#ff69b4"/>
+                    <path d="M 58 60 Q 60 56 62 60 Q 64 64 60 66 Q 56 64 58 60" fill="#ff69b4"/>
+                    <circle cx="32" cy="68" r="4" fill="#ffb6c1" opacity="0.7"/>
+                    <circle cx="68" cy="68" r="4" fill="#ffb6c1" opacity="0.7"/>
+                    <path d="M 45 70 Q 50 75 55 70" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1>تحبيني؟ 🥺👉👈</h1>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="celebrate()">إي طبعاً! ❤️</button>
+            </div>
         </div>
+
+        <!-- الخطوة 5: النهاية السعيدة والمؤثرات -->
+        <div class="step" id="step5">
+            <div style="font-size: 3.5rem; margin-bottom: 15px;">💖🌸</div>
+            <h2>وأنا أحبج هواي يا أحلى ليلى بالدنيا! 🥰</h2>
+            <p>موقعج الخاص ممتلئ بالحب والبهجة اليوم!</p>
+        </div>
+
     </div>
 
     <script>
-        // استخدام ملف صوتي مدمج من نظام الويب للتوافق الفوري بدون ملف خارجي
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        
-        function playKissSound() {
-            // توليد صوت يشبه القبلة إلكترونياً لضمان عمله مباشرة على أي جهاز
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(1500, audioCtx.currentTime + 0.15);
-            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.15);
+        // دالة التنقل بين الخطوات
+        function goToStep(stepNumber) {
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step' + stepNumber).classList.add('active');
         }
 
-        function changeStep(currentId, nextId) {
-            document.getElementById(currentId).classList.remove('active');
-            document.getElementById(nextId).classList.add('active');
+        // معالجة إجابة السؤال الأول
+        function nextStep(currentStep, answer) {
+            const responseText = document.getElementById('response-text1');
+            if (answer === 'yes') {
+                responseText.innerText = "دومج زينة وعال العال يا رب! تفضلي هديتج:";
+            } else {
+                responseText.innerText = "يا عمري، سلامة قلبج! هسة تصيرين زينة مع هالبوسة:";
+            }
+            goToStep(2);
         }
 
-        function answerTrue() {
-            document.getElementById('bunnyMouth').style.borderRadius = "0 0 15px 15px"; // ابتسامة عريضة
-            document.getElementById('replyText').innerText = "دووومج يارب زينة ومبسوطة! دايماً ضحكتج الحلوة تنور الدنيا 💖";
-            changeStep('step1', 'step2');
-        }
-
-        function answerFalse() {
-            document.getElementById('bunnyMouth').style.borderTop = "3px solid #333"; // فم حزين
-            document.getElementById('bunnyMouth').style.borderBottom = "none";
-            document.getElementById('replyText').innerText = "يا عمري سلامة قلبج.. هسة الكسرة والزعل كله يروح! جيتج ومحضرلج مفاجأة 🥺";
-            changeStep('step1', 'step2');
-        }
-
-        function triggerKiss() {
-            playKissSound();
-            
-            // تفعيل حركة البوسة الكرتونية
-            const kiss = document.getElementById('kissMark');
-            kiss.classList.add('kiss-active');
-            
-            // إعادة شكل الفم طبيعي ولطيف
-            document.getElementById('bunnyMouth').style.borderTop = "none";
-            document.getElementById('bunnyMouth').style.borderBottom = "3px solid #333";
+        // تشغيل صوت البوسة والانتقال
+        function playKiss() {
+            // توليد صوت البوسة برمجياً دون الحاجة لملف خارجي يسبب التعليق
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
