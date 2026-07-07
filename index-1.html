@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ليلى 💖</title>
+<style>
+body{margin:0;font-family:Arial;background:linear-gradient(135deg,#ffd6ea,#fff);display:flex;justify-content:center;align-items:center;height:100vh;overflow:hidden}
+.card{background:rgba(255,255,255,.75);backdrop-filter:blur(10px);padding:24px;border-radius:24px;max-width:360px;text-align:center;box-shadow:0 10px 30px rgba(255,105,180,.3)}
+button{padding:12px 20px;border:none;border-radius:30px;background:#ff5fa2;color:#fff;margin:6px;font-size:18px}
+#hearts span{position:fixed;font-size:24px;animation:f 4s linear forwards}
+@keyframes f{to{transform:translateY(-110vh) scale(2);opacity:0}}
+.hidden{display:none}
+</style></head>
+<body>
+<div id="hearts"></div>
+<div class="card">
+<h1>🌸 ليلى 🌸</h1>
+<div id="msg">هلو ليلى، شلونج؟ زينة؟</div>
+<div id="s1"><button onclick="ans(true)">إي زينة</button><button onclick="ans(false)">لا</button></div>
+<div id="s2" class="hidden"><button onclick="kiss()">جيت 💕</button></div>
+<div id="s3" class="hidden"><p>تحبيني؟ ❤️</p><button onclick="love()">إي</button></div>
+</div>
+<script>
+function beep(){let c=new (AudioContext||webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);g.gain.value=.05;o.start();o.stop(c.currentTime+.2)}
+function ans(ok){msg.innerHTML=ok?"الحمد لله، فرحت لأنج بخير 💖":"أتمنى أيامج كلها فرح وسعادة 🌷";s1.className="hidden";s2.className=""}
+function kiss(){beep();msg.innerHTML="😘💋 هاي بوسة إلج";s2.className="hidden";setTimeout(()=>s3.className="",1200)}
+function love(){msg.innerHTML="<h2>💖 أحبج هواية ليلى، وأتمنى تبقين دوم مبتسمة 🌸</h2>";s3.className="hidden";for(let i=0;i<60;i++)setTimeout(h,i*70)}
+function h(){let e=document.createElement('span');e.textContent='❤️';e.style.left=Math.random()*100+'vw';e.style.bottom='-20px';hearts.appendChild(e);setTimeout(()=>e.remove(),4000)}
+</script>
+</body></html>
